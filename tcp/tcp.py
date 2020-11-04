@@ -8,15 +8,15 @@ from datetime import datetime
 RECV_IS_INSTALLED = "IS_INSTALLED"
 RECV_IS_UNINSTALLED = "IS_UNINSTALLED"
 RECV_IS_FORMATTED = "IS_FORMATTED"
-RECV_RECIEVED_DATE = "RECIEVED DATE"
+RECV_RECEIVED_DATE = "RECEIVED DATE"
 RECV_SET_DATE = "SET DATE"
 RECVD_MOUNTING = "MOUNTING"
 RECVD_MOUNTED = "FINISHED MOUNTING"
 RECVD_UNMOUNTING = "UNMOUNTING"
 RECVD_UNMOUNTED = "FINISHED UNMOUNTING"
-RECVD_BOOT = "RECIEVED BOOT"
-RECVD_FORMAT = "RECIEVED FORMAT"
-RECVD_REINSTALL = "RECIEVED REINSTALL"
+RECVD_BOOT = "RECEIVED BOOT"
+RECVD_FORMAT = "RECEIVED FORMAT"
+RECVD_REINSTALL = "RECEIVED REINSTALL"
 
 # message sent to PI
 SEND_BOOT = b"boot\n" + b"EOM\n"
@@ -112,9 +112,9 @@ class TCPServer:
             req = fd.readline()
             while req:
                 req = req.strip()
-                logger.info("TCP - recieved request {}".format(req))
-                if req == RECV_RECIEVED_DATE:
-                    logger.info("TCP - pi successfully recieved date string")
+                logger.info("TCP - received request {}".format(req))
+                if req == RECV_RECEIVED_DATE:
+                    logger.info("TCP - pi successfully received date string")
                 elif req == RECV_SET_DATE:
                     logger.info("TCP - pi successfully set local datetime")
                 elif req == RECVD_MOUNTING:
@@ -126,11 +126,11 @@ class TCPServer:
                 elif req == RECVD_UNMOUNTED:
                     logger.info("TCP - pi successfully unmounted filesystem")
                 elif req == REVD_BOOT:
-                    logger.info("TCP - pi successfully recieved boot command")
+                    logger.info("TCP - pi successfully received boot command")
                 elif req == RECVD_FORMAT:
-                    logger.info("TCP - pi successfully recieved format command")
+                    logger.info("TCP - pi successfully received format command")
                 elif req == RECVD_REINSTALL:
-                    logger.info("TCP - pi successfully recieved reinstall command")
+                    logger.info("TCP - pi successfully received reinstall command")
                 elif req == RECV_IS_UNINSTALLED:
                     logger.info("TCT - uninstalled, sending format")
                     # this line of code is suggested by team fire

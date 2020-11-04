@@ -99,18 +99,18 @@ do
         ;;
     boot)
         # If Pi already has OS, exit out of the script. The script in the init will then switch the root filesystem to new_root
-        send "RECIEVED BOOT"
+        send "RECEIVED BOOT"
         mounting
         exit 0
         break
         ;;
     "busybox date "*)
-        send "RECIEVED DATE"
+        send "RECEIVED DATE"
         $req
 	send "SET DATE"
         ;;
     format)
-	send "RECIEVED FORMAT"
+	send "RECEIVED FORMAT"
         format
         cd /m
         # After the partitions have been formatted, send "FORMATTED" to let Piman know
@@ -123,7 +123,7 @@ do
         exit 0
         ;;
     reinstall)
-	send "RECIEVED REINSTALL"
+	send "RECEIVED REINSTALL"
         mounting
         rm -rf /*
         unmount
