@@ -105,10 +105,12 @@ do
         break
         ;;
     "busybox date "*)
-        send "RECEIVED DATE"
+        send "RECIEVED DATE"
         $req
+	send "SET DATE"
         ;;
     format)
+	send "RECIEVED FORMAT"
         format
         cd /m
         # After the partitions have been formatted, send "FORMATTED" to let Piman know
@@ -121,6 +123,7 @@ do
         exit 0
         ;;
     reinstall)
+	send "RECIEVED REINSTALL"
         mounting
         rm -rf /*
         unmount
